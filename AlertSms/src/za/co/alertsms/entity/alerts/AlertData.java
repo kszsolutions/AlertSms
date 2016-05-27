@@ -25,7 +25,16 @@ public class AlertData implements SpringConfigsInterface {
 	
 	private DataSource alertDs;
 	private String createAlert;
+	private String getActiveAlerts;
+	
+	
 
+	public String getGetActiveAlerts() {
+		return getActiveAlerts;
+	}
+	public void setGetActiveAlerts(String getActiveAlerts) {
+		this.getActiveAlerts = getActiveAlerts;
+	}
 	public DataSource getAlertDs() {
 		return alertDs;
 	}

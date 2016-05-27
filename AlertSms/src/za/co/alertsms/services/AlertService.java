@@ -1,7 +1,9 @@
 package za.co.alertsms.services;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import za.co.alertsms.entity.alerts.AlertData;
 import za.co.alertsms.entity.alerts.AlertInfo;
@@ -40,5 +42,42 @@ public int createAlert(AlertInfo alertInfo){
 	return rs;
 
 	}
+
+public ArrayList<String> getAlerts(){
+	
+	Statement stmt = null;
+	Connection conn = null;
+	ArrayList<String> alertResults = new ArrayList<>();
+	ResultSet rs = null;
+try
+	{
+		String sql = AlertData.getAction().getGetActiveAlerts();
+		conn = AlertData.getAction().getAlertDs().getConnection();
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		while(rs.next())
+		{
+			alertResults.add(rs.getString("alert"));
+		}
+	}
+catch(Exception ex)
+	{
+		LogManager.error("Failed to alerts Reason: " + ex.getMessage() , this.getClass());
+	}
+finally 
+{
+	try
+	{
+		stmt.close();
+		conn.close();
+	}
+	catch(Exception ex)
+	{
+		
+	}
+}
+return alertResults;
+
+}
 
 }

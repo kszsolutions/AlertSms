@@ -27,6 +27,11 @@
 						);]]>
 		 </value>
 	   </property>
+	    <property name="getActiveAlerts" >
+		    <value><![CDATA[
+					SELECT alert FROM alerts WHERE active = 1;]]>
+		 </value>
+	   </property>
 	
 	
 		

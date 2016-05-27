@@ -1,0 +1,38 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+	
+	
+   	<bean id="AlertData" class="za.co.alertsms.entity.alerts.AlertData">
+ 
+		<property name="alertDs" ref="alertSms" />
+		 <property name="createAlert" >
+		    <value><![CDATA[
+					INSERT INTO `alertsms`.`alerts` 
+						(`alert`, 
+						`iArea`, 
+						`iUser`, 
+						`createdDate`,
+						`active`
+						)
+						VALUES
+						('${alert}', 
+						'${iArea}', 
+						'${iUser}', 
+						NOW(),
+						'1'
+						);]]>
+		 </value>
+	   </property>
+	
+	
+		
+		
+   </bean>
+ 
+
+	
+</beans>

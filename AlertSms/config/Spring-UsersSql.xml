@@ -1,0 +1,38 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+	
+	
+   	<bean id="UserData" class="za.co.alertsms.entity.users.UserData">
+ 
+		<property name="userDs" ref="alertSms" />
+			<property name="createUser" >
+	    <value><![CDATA[INSERT INTO `alertsms`.`users` 
+						(`firstName`, 
+						 `lastName`,
+						 `userName`,
+						 `password`)
+						VALUES
+	('${fName}','${lName}','${userName}','${password}');]]></value></property>
+	
+<property name="getUser" >
+	    <value><![CDATA[SELECT 	`iUser`, 
+						`firstName`, 
+						`lastName`, 
+						`userName`, 
+						`password`						 
+						FROM 
+						`alertsms`.`users` 
+						WHERE userName = '${username}';]]></value></property>
+                                              
+		
+		
+		
+   </bean>
+ 
+
+	
+</beans>

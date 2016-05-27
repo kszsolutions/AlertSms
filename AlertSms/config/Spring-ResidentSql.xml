@@ -1,0 +1,31 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+	
+	
+   	<bean id="ResidentData" class="za.co.alertsms.entity.residents.ResidentData">
+ 
+		<property name="residentDs" ref="alertSms" />
+			<property name="createResident" >
+	    <value><![CDATA[INSERT INTO `alertsms`.`residents` 
+						(`firstName`, 
+						 `lastName`, 
+						 `mobileNumber`, 
+						 `iArea`)
+						VALUES
+	('${fName}','${lName}',${mobileNumber},'${iArea}');]]></value></property>
+	
+	<property name="searchResidentBySuburb" >
+	    <value><![CDATA[SELECT mobileNumber FROM residents WHERE iArea = '${iArea}';]]></value></property>
+                                              
+		
+		
+		
+   </bean>
+ 
+
+	
+</beans>
